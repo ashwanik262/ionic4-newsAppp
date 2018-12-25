@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{title|titlecase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let item of data?.articles" (click)="details(item)">
+        <ion-img [src]="item.urlToImage"></ion-img>
+        <ion-card-header>
+          <ion-card-title>{{item.title}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+</ion-content>

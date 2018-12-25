@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-title>News</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+  <ion-segment color="danger" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="topHeadlines">
+      Top Headlines
+    </ion-segment-button>
+    <ion-segment-button value="Category">
+      Category
+    </ion-segment-button>
+  </ion-segment>
+  <div *ngIf="isTopHeadline">
+    <ion-card *ngFor="let item of data?.articles" (click)="details(item)">
+      <ion-img [src]="item.urlToImage"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{item.title}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!isTopHeadline">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card style="background:#ff5f5f;color: white" class="category-Card" (click)="category('Business')">
+            <ion-card-content>Business</ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card style="background:#10dc60;color: white" class="category-Card" (click)="category('Entertainment')">
+            <ion-card-content>Entertainment</ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card style="background:#ffd31a;color: white" class="category-Card" (click)="category('Health')">
+            <ion-card-content>Health</ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card style="background:#7e57ff;color: white" class="category-Card" (click)="category('Science')">
+            <ion-card-content>Science</ion-card-content>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-card style="background:#989aa2;color: white" class="category-Card" (click)="category('Sports')">
+            <ion-card-content>Sports</ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card  style="background:#ff6f38;color: white"class="category-Card" (click)="category('Technology')">
+            <ion-card-content>Technology</ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
